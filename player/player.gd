@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var friction = 256
 @export var jump_force = 128
 
+@onready var animation_player = $AnimationPlayer
+@onready var sprite_2d = $Sprite2D
+
 
 func _physics_process(delta):
 	apply_gravity(delta)
@@ -18,6 +21,7 @@ func _physics_process(delta):
 		apply_friction(delta)
 		
 	jump_check()
+	update_animations(direction)
 	move_and_slide()
 
 
@@ -37,3 +41,14 @@ func apply_friction(delta):
 func jump_check():
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y -= jump_force
+
+
+func update_animations(direction):
+	if direction:
+		animation_player.play("run")
+		sprite_2d.scale.x = sign(direction)
+	else:
+		animation_player.play("idle")
+		
+	if not is_on_floor():
+		animation_player.play("jump")
