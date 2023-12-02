@@ -1,20 +1,20 @@
 extends CharacterBody2D
 
-@export var acceleration = 512
-@export var max_velocity = 64
-@export var max_fall_velocity = 128
-@export var gravity = 200
-@export var friction = 256
-@export var jump_force = 128
+@export var acceleration: int = 512
+@export var max_velocity: int = 64
+@export var max_fall_velocity: int = 128
+@export var gravity: int = 200
+@export var friction: int = 256
+@export var jump_force: int = 128
 
-@onready var animation_player = $AnimationPlayer
-@onready var sprite_2d = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	
-	var direction = Input.get_axis("ui_left","ui_right")
+	var direction: float = Input.get_axis("ui_left","ui_right")
 	if direction:
 		apply_acceleration(direction, delta)
 	else: 
@@ -25,20 +25,20 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func apply_gravity(delta):
+func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
 
 
-func apply_acceleration(direction,delta):
+func apply_acceleration(direction: float,delta: float) -> void:
 	velocity.x = move_toward(velocity.x, direction * max_velocity, acceleration * delta)
 
 
-func apply_friction(delta):
+func apply_friction(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0, friction * delta)
 
 
-func jump_check():
+func jump_check() -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y -= jump_force
@@ -47,7 +47,7 @@ func jump_check():
 			velocity.y = -jump_force / 2
 
 
-func update_animations(direction):
+func update_animations(direction: float) -> void:
 	if direction:
 		animation_player.play("run")
 		sprite_2d.scale.x = sign(direction)
