@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DustEffectScene: PackedScene = preload('res://effects/dust_effect.tscn')
+
 @export var acceleration: int = 512
 @export var max_velocity: int = 64
 @export var max_fall_velocity: int = 128
@@ -23,6 +25,13 @@ func _physics_process(delta: float) -> void:
 	jump_check()
 	update_animations(direction)
 	move_and_slide()
+
+
+func create_dust_effect() -> void:
+	var dust_effect: CPUParticles2D = DustEffectScene.instantiate()
+	var main: Node2D = get_tree().current_scene
+	main.add_child(dust_effect)
+	dust_effect.global_position = global_position
 
 
 func apply_gravity(delta: float) -> void:
