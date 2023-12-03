@@ -10,7 +10,8 @@ particles_anim_loop = false
 
 [node name="DustEffect" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_n32ag")
-amount = 2
+amount = 1
+lifetime = 1.1
 explosiveness = 1.0
 texture = ExtResource("1_614wy")
 direction = Vector2(2.08165e-12, -1)
