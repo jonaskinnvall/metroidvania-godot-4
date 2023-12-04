@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://pky2h0au0m82"]
+[gd_scene load_steps=10 format=3 uid="uid://pky2h0au0m82"]
 
 [ext_resource type="Texture2D" uid="uid://s6i3pbjnqfm0" path="res://player/player.png" id="1_cgl5i"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_jmlyb"]
+[ext_resource type="PackedScene" uid="uid://berds6r1eixo7" path="res://player/player_blaster.tscn" id="3_p7ti0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85bhc"]
 size = Vector2(8, 15)
@@ -104,6 +105,10 @@ script = ExtResource("1_jmlyb")
 position = Vector2(0, -12)
 texture = ExtResource("1_cgl5i")
 hframes = 12
+
+[node name="PlayerBlaster" parent="Sprite2D" instance=ExtResource("3_p7ti0")]
+show_behind_parent = true
+position = Vector2(2, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
