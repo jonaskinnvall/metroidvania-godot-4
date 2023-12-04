@@ -17,7 +17,7 @@ const DustEffectScene: PackedScene = preload('res://effects/dust_effect.tscn')
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	
-	var direction: float = Input.get_axis("ui_left","ui_right")
+	var direction: float = Input.get_axis("move_left","move_right")
 	if direction:
 		apply_acceleration(direction, delta)
 	else: 
@@ -55,10 +55,10 @@ func apply_friction(delta: float) -> void:
 
 func jump_check() -> void:
 	if is_on_floor() or coyote_timer.time_left > 0.0:
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("jump"):
 			velocity.y -= jump_force
 	if not is_on_floor(): 
-		if Input.is_action_just_released("ui_up") and velocity.y < -jump_force / 2:
+		if Input.is_action_just_released("jump") and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
 
 
@@ -68,6 +68,7 @@ func update_animations(direction: float) -> void:
 	if direction:
 		animation_player.play("run")
 		animation_player.speed_scale = direction * sprite_2d.scale.x 
+		print(direction, sprite_2d.scale.x)
 	else:
 		animation_player.play("idle")
 		
