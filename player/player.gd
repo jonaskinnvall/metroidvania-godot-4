@@ -63,9 +63,11 @@ func jump_check() -> void:
 
 
 func update_animations(direction: float) -> void:
+	sprite_2d.scale.x = sign(get_local_mouse_position().x)
+	if abs(sprite_2d.scale.x) != 1: sprite_2d.scale.x = 1
 	if direction:
 		animation_player.play("run")
-		sprite_2d.scale.x = sign(direction)
+		animation_player.speed_scale = direction * sprite_2d.scale.x 
 	else:
 		animation_player.play("idle")
 		
