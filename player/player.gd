@@ -68,7 +68,6 @@ func update_animations(direction: float) -> void:
 	if direction:
 		animation_player.play("run")
 		animation_player.speed_scale = direction * sprite_2d.scale.x 
-		print(direction, sprite_2d.scale.x)
 	else:
 		animation_player.play("idle")
 		
