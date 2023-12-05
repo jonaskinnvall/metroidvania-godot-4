@@ -12,6 +12,7 @@ const DustEffectScene: PackedScene = preload('res://effects/dust_effect.tscn')
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var player_blaster: Node2D = $PlayerBlaster
 
 
 func _physics_process(delta: float) -> void:
@@ -24,6 +25,10 @@ func _physics_process(delta: float) -> void:
 		apply_friction(delta)
 		
 	jump_check()
+	
+	if Input.is_action_just_pressed('fire'):
+		player_blaster.fire_bullet()
+		
 	update_animations(direction)
 	
 	var was_on_floor: bool = is_on_floor()
