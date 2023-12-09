@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func fire_bullet() -> void:
-	var bullet = Utils.instanstiate_to_world(BulletScene, muzzle.global_position)
+	var bullet: Node2D = Utils.instanstiate_to_world(BulletScene, muzzle.global_position)
 	bullet.rotation = blaster_sprite.rotation
 	bullet.update_rotation()
 	

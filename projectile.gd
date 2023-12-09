@@ -2,7 +2,7 @@ extends Node2D
 
 @export var  speed: int = 250
 
-var velocity = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
 
 
 func _process(delta: float) -> void:
