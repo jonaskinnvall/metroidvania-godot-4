@@ -39,10 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 func create_dust_effect() -> void:
-	var dust_effect: CPUParticles2D = DustEffectScene.instantiate()
-	var main: Node2D = get_tree().current_scene
-	main.add_child(dust_effect)
-	dust_effect.global_position = global_position
+	Utils.instanstiate_to_world(DustEffectScene, global_position)
 
 
 func apply_gravity(delta: float) -> void:

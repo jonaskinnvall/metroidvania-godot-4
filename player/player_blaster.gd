@@ -12,8 +12,6 @@ func _process(_delta: float) -> void:
 
 
 func fire_bullet() -> void:
-	var bullet: Node2D = BulletScene.instantiate()
-	var main: Node2D = get_tree().current_scene
-	main.add_child(bullet)
+	var bullet = Utils.instanstiate_to_world(BulletScene, muzzle.global_position)
 	bullet.rotation = blaster_sprite.rotation
-	bullet.global_position = muzzle.global_position
+	
