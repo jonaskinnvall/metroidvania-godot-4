@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr7rnsmitt6ey"]
+[gd_scene load_steps=8 format=3 uid="uid://cr7rnsmitt6ey"]
 
 [ext_resource type="PackedScene" uid="uid://pky2h0au0m82" path="res://player/player.tscn" id="1_gedpc"]
 [ext_resource type="Script" path="res://world.gd" id="1_jieoe"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dja5ytr0ise7l" path="res://world/moving_platform.tscn" id="3_48ue8"]
 [ext_resource type="Curve2D" uid="uid://dolwkytlkggwf" path="res://world/up_down_path.tres" id="5_oou18"]
 [ext_resource type="Curve2D" uid="uid://dlukexwrhw6um" path="res://world/hex_path.tres" id="6_o4mxc"]
+[ext_resource type="PackedScene" uid="uid://b4t6syjcgsc3h" path="res://enemies/walking_enemy.tscn" id="7_yeh2w"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jieoe")
@@ -35,6 +36,31 @@ curve = ExtResource("6_o4mxc")
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("3_48ue8")]
 position = Vector2(152, 56)
+
+[node name="WalkingEnemy" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(16, 128)
+
+[node name="WalkingEnemy2" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(152, 128)
+turns_on_ledge = false
+
+[node name="WalkingEnemy3" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(32, 192)
+
+[node name="WalkingEnemy4" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(336, 80)
+
+[node name="WalkingEnemy5" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(200, 256)
+
+[node name="WalkingEnemy6" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(16, 288)
+
+[node name="WalkingEnemy7" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(312, 32)
+
+[node name="WalkingEnemy8" parent="." instance=ExtResource("7_yeh2w")]
+position = Vector2(114, 304)
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
