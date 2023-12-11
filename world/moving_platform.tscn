@@ -1,9 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://dja5ytr0ise7l"]
 
 [ext_resource type="Texture2D" uid="uid://dvkbkklkgvy18" path="res://world/moving_platform.png" id="1_c6dr6"]
+[ext_resource type="Curve2D" uid="uid://c0n1hfqkihse1" path="res://world/right_left_path.tres" id="2_lofdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q30x5"]
 size = Vector2(32, 8)
+
+[sub_resource type="Animation" id="Animation_dned8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_6jv0s"]
 resource_name = "follow_path"
@@ -22,32 +38,11 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_dned8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_in80u"]
 _data = {
 "RESET": SubResource("Animation_dned8"),
 "follow_path": SubResource("Animation_6jv0s")
 }
-
-[sub_resource type="Curve2D" id="Curve2D_l74ag"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, -40, 0, 0, 0, 0, 136, -40, 0, 0, 0, 0, 192, 0, 0, 0, 0, 0, 136, 40, 0, 0, 0, 0, 56, 40, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
 
 [node name="MovingPlatform" type="Node2D"]
 
@@ -70,7 +65,7 @@ autoplay = "follow_path"
 speed_scale = 0.15
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_l74ag")
+curve = ExtResource("2_lofdp")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 rotates = false
