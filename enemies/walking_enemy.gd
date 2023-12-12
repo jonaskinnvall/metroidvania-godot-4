@@ -26,3 +26,8 @@ func turn_around() -> void:
 
 func is_on_ledge() -> bool:
 	return is_on_floor() and not ray_cast_2d.is_colliding()
+
+
+func _on_hurtbox_hurt(hitbox: Variant, damage: Variant) -> void:
+	print('damage on enemy ', self, ': ', damage)
+	queue_free()
