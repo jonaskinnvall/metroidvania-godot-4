@@ -89,7 +89,7 @@ func _on_drop_timer_timeout() -> void:
 	set_collision_mask_value(2, true)
 
 
-func _on_hurtbox_hurt(hitbox: Variant, damage: Variant) -> void:
+func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 	print('damage on player ', self, ': ', damage)
 	camera_2d.reparent(get_tree().current_scene)
 	queue_free()
