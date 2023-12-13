@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const DustEffectScene: PackedScene = preload('res://effects/dust_effect.tscn')
+const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
 
 @export var acceleration: int = 512
 @export var max_velocity: int = 64
@@ -67,6 +68,7 @@ func jump_check() -> void:
 	if is_on_floor() or coyote_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y -= jump_force
+			Utils.instanstiate_to_world(JumpEffectScene, global_position)
 	if not is_on_floor(): 
 		if Input.is_action_just_released("jump") and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
