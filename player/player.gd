@@ -94,4 +94,5 @@ func _on_drop_timer_timeout() -> void:
 func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 	print('damage on player ', self, ': ', damage)
 	camera_2d.reparent(get_tree().current_scene)
+	Events.add_screenshake.emit(3, 0.25)
 	queue_free()
