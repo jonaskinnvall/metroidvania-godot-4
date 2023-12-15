@@ -1,3 +1,3 @@
 extends Node
 
-signal add_screenshake(amount, duration)
+signal add_screenshake(amount: float, duration: float)
