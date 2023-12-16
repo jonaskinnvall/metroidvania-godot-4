@@ -19,6 +19,10 @@ const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
 @onready var camera_2d: Camera2D = $Camera2D
 
 
+func _ready() -> void:
+	PlayerStats.no_health.connect(die)
+
+
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	
@@ -87,12 +91,16 @@ func update_animations(direction: float) -> void:
 		animation_player.play("jump")
 
 
+func die() -> void:
+	camera_2d.reparent(get_tree().current_scene)
+	queue_free()
+
+
 func _on_drop_timer_timeout() -> void:
 	set_collision_mask_value(2, true)
 
 
 func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 	print('damage on player ', self, ': ', damage)
-	camera_2d.reparent(get_tree().current_scene)
 	Events.add_screenshake.emit(3, 0.25)
-	queue_free()
+	PlayerStats.health -= 1

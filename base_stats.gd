@@ -1,3 +1,4 @@
+class_name BaseStats
 extends Node
 
 signal no_health
