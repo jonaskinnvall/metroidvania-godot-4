@@ -10,6 +10,7 @@ const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
 @export var friction: int = 256
 @export var jump_force: float = 128.0
 var double_jump: bool = false
+var state: Callable = move_state
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -26,6 +27,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	state.call(delta)
+
+
+func move_state(delta: float) -> void:
 	apply_gravity(delta)
 	
 	var direction: float = Input.get_axis("move_left","move_right")
@@ -51,6 +56,10 @@ func _physics_process(delta: float) -> void:
 	var just_left_edge: bool = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_timer.start()
+
+
+func wall_slide_state(_delta: float) -> void:
+	pass
 
 
 func create_dust_effect() -> void:
