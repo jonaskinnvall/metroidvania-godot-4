@@ -8,8 +8,8 @@ const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
 @export var max_fall_velocity: int = 128
 @export var gravity: int = 200
 @export var friction: int = 256
-@export var jump_force: int = 128
-
+@export var jump_force: float = 128.0
+var double_jump: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -71,13 +71,23 @@ func apply_friction(delta: float) -> void:
 
 
 func jump_check() -> void:
+	if is_on_floor():
+		double_jump = true
 	if is_on_floor() or coyote_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump"):
-			velocity.y -= jump_force
-			Utils.instanstiate_to_world(JumpEffectScene, global_position)
+			jump(jump_force)
 	if not is_on_floor(): 
 		if Input.is_action_just_released("jump") and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
+	if not is_on_floor() and double_jump:
+		if Input.is_action_just_pressed("jump"):
+			jump(jump_force * 0.75)
+			double_jump = false
+
+
+func jump(force: float) -> void:
+	velocity.y -= force
+	Utils.instanstiate_to_world(JumpEffectScene, global_position)
 
 
 func update_animations(direction: float) -> void:
