@@ -18,6 +18,7 @@ const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
 @onready var drop_timer: Timer = $DropTimer
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
 
 
 func _ready() -> void:
@@ -105,6 +106,4 @@ func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 	print('damage on player ', self, ': ', damage)
 	Events.add_screenshake.emit(3, 0.25)
 	PlayerStats.health -= 1
-	hurtbox.is_invincible = true
-	await get_tree().create_timer(1.0).timeout
-	hurtbox.is_invincible = false
+	blink_animation_player.play('blink')
