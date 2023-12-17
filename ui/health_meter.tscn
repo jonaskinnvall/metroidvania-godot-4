@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c10wb64q720wl"]
+
+[ext_resource type="Script" path="res://ui/health_meter.gd" id="1_uwwhf"]
+[ext_resource type="Texture2D" uid="uid://dr1ja61scs3a7" path="res://ui/health_meter_empty.png" id="1_vovys"]
+[ext_resource type="Texture2D" uid="uid://b4sjdv62l30qg" path="res://ui/health_meter.png" id="2_7cnu5"]
+
+[node name="HealthMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uwwhf")
+
+[node name="Empty" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 21.0
+offset_bottom = 12.0
+texture = ExtResource("1_vovys")
+stretch_mode = 1
+
+[node name="Full" type="TextureRect" parent="."]
+offset_right = 6.0
+offset_bottom = 12.0
+texture = ExtResource("2_7cnu5")
+expand_mode = 1
+stretch_mode = 1
