@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://pky2h0au0m82"]
+[gd_scene load_steps=17 format=3 uid="uid://pky2h0au0m82"]
 
 [ext_resource type="Texture2D" uid="uid://s6i3pbjnqfm0" path="res://player/player.png" id="1_cgl5i"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_jmlyb"]
@@ -90,16 +90,74 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_111h8"]
+resource_name = "wall_slide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8yig"]
 _data = {
 "RESET": SubResource("Animation_j4ulw"),
 "idle": SubResource("Animation_8jetl"),
 "jump": SubResource("Animation_ayxm3"),
-"run": SubResource("Animation_5r24a")
+"run": SubResource("Animation_5r24a"),
+"wall_slide": SubResource("Animation_111h8")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlwdr"]
 size = Vector2(8, 15)
+
+[sub_resource type="Animation" id="Animation_8rapm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBlaster:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"@is_invincible_setter"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g8hfk"]
 resource_name = "blink"
@@ -140,47 +198,6 @@ tracks/2/keys = {
 "args": [true],
 "method": &"@is_invincible_setter"
 }, {
-"args": [false],
-"method": &"@is_invincible_setter"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_8rapm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerBlaster:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hurtbox")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
 "args": [false],
 "method": &"@is_invincible_setter"
 }]
