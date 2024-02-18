@@ -67,6 +67,7 @@ func wall_state(delta: float) -> void:
 	var wall_normal: Vector2 = get_wall_normal()
 	sprite_2d.scale.x = sign(wall_normal.x)
 	animation_player.play('wall_slide')
+	velocity.y = clampf(velocity.y, -wall_velocity, max_wall_velocity)
 	
 	wall_jump_check(wall_normal.x)
 	apply_wall_slide_gravity(delta)
