@@ -9,6 +9,7 @@ const WallJumpEffectScene: PackedScene = preload('res://effects/wall_jump_effect
 @export var max_fall_velocity: int = 128
 @export var gravity: int = 200
 @export var friction: int = 256
+@export var air_friction: int = 64
 @export var jump_force: float = 128.0
 @export var wall_velocity: int = 48
 @export var max_wall_velocity: int = 128
@@ -128,6 +129,8 @@ func apply_acceleration(direction: float,delta: float) -> void:
 func apply_friction(delta: float) -> void:
 	if is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 
 
 func jump_check() -> void:
