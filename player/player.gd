@@ -125,7 +125,8 @@ func apply_acceleration(direction: float,delta: float) -> void:
 
 
 func apply_friction(delta: float) -> void:
-	velocity.x = move_toward(velocity.x, 0, friction * delta)
+	if is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
 
 
 func jump_check() -> void:
