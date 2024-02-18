@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const DustEffectScene: PackedScene = preload('res://effects/dust_effect.tscn')
 const JumpEffectScene: PackedScene = preload('res://effects/jump_effect.tscn')
+const WallJumpEffectScene: PackedScene = preload('res://effects/wall_jump_effect.tscn')
 
 @export var acceleration: int = 512
 @export var max_velocity: int = 64
@@ -78,7 +79,7 @@ func wall_check() -> void:
 	if not is_on_floor() and is_on_wall():
 		state = wall_state
 		double_jump = true
-
+		create_dust_effect()
 
 func wall_detatch(delta: float, wall_axis: float) -> void:
 	if not is_on_wall() or is_on_floor():
@@ -104,7 +105,10 @@ func wall_jump_check(wall_axis: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		state = move_state
 		velocity.x = wall_axis * max_velocity
-		jump(jump_force * 0.75)
+		jump(jump_force * 0.75, false)
+		var effect_position: Vector2 = global_position + Vector2(wall_axis * 4, -2)
+		var wall_jump_effect:Node2D = Utils.instanstiate_to_world(WallJumpEffectScene, effect_position)
+		wall_jump_effect.scale.x = wall_axis
 
 
 func create_dust_effect() -> void:
@@ -139,10 +143,11 @@ func jump_check() -> void:
 			double_jump = false
 
 
-func jump(force: float) -> void:
+func jump(force: float, create_effect: bool = true) -> void:
 	velocity.y -= force
-	Utils.instanstiate_to_world(JumpEffectScene, global_position)
-
+	if create_effect:
+		Utils.instanstiate_to_world(JumpEffectScene, global_position)
+	
 
 func update_animations(direction: float) -> void:
 	sprite_2d.scale.x = sign(get_local_mouse_position().x)
