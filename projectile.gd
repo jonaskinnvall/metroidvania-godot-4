@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 
-func update_rotation() -> void:
+func update_velocity_based_on_rotation() -> void:
 	velocity.x = speed
 	velocity = velocity.rotated(rotation)
 
