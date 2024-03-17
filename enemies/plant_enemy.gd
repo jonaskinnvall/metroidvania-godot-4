@@ -11,11 +11,8 @@ const EnemyBulletScene: PackedScene = preload('res://enemies/enemy_bullet.tscn')
 
 func fire_bullet() -> void:
 	var bullet: Projectile = Utils.instanstiate_to_world(EnemyBulletScene, bullet_spawn_point.global_position)
-	var direction: float = global_position.angle_to_point(fire_direction.global_position)
-	bullet.rotation = direction
-	bullet.rotate(randf_range(-deg_to_rad(spread/2),deg_to_rad(spread/2))) 
-	bullet.speed = bullet_speed
-	bullet.update_rotation()
+	var direction: Vector2 = global_position.direction_to(fire_direction.global_position) 
+	bullet.velocity = (direction * bullet_speed).rotated(randf_range(-deg_to_rad(spread/2),deg_to_rad(spread/2)))
 
 
 func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
