@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const EnemyDeathEffect: PackedScene = preload('res://effects/enemy_death_effect.tscn')
+
 @export var speed: float = 30.0
 @export var turns_on_ledge: bool = true
 var direction: float = 1.0
@@ -7,6 +9,7 @@ var gravity: float = 200.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var stats: Node = $Stats
+@onready var death_effect_spawn_location: Marker2D = $DeathEffectSpawnLocation
 
 
 func _physics_process(delta: float) -> void:
@@ -36,4 +39,5 @@ func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 
 
 func _on_stats_no_health() -> void:
+	Utils.instanstiate_to_world(EnemyDeathEffect, death_effect_spawn_location.global_position)
 	queue_free()

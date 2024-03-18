@@ -1,6 +1,7 @@
 extends Node2D
 
 const EnemyBulletScene: PackedScene = preload('res://enemies/enemy_bullet.tscn')
+const EnemyDeathEffect: PackedScene = preload('res://effects/enemy_death_effect.tscn')
 
 @export var bullet_speed: int = 30
 @export var spread: int = 30
@@ -20,4 +21,5 @@ func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
 
 
 func _on_base_stats_no_health() -> void:
+	Utils.instanstiate_to_world(EnemyDeathEffect, bullet_spawn_point.global_position)
 	queue_free()

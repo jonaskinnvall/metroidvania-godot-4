@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d37dbkyikvfda"]
+
+[ext_resource type="PackedScene" uid="uid://bs10vwwhv5v6y" path="res://effects/dust_effect.tscn" id="1_lklt1"]
+
+[node name="EnemyDeathEffect" instance=ExtResource("1_lklt1")]
+position = Vector2(0, -2)
+amount = 24
+lifetime = 0.6
+emission_shape = 1
+emission_sphere_radius = 10.0
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+
+[node name="Timer" parent="." index="0"]
+wait_time = 0.5
