@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr7rnsmitt6ey"]
+[gd_scene load_steps=11 format=3 uid="uid://cr7rnsmitt6ey"]
 
 [ext_resource type="PackedScene" uid="uid://pky2h0au0m82" path="res://player/player.tscn" id="1_gedpc"]
 [ext_resource type="Script" path="res://world.gd" id="1_jieoe"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4t6syjcgsc3h" path="res://enemies/walking_enemy.tscn" id="7_yeh2w"]
 [ext_resource type="PackedScene" uid="uid://c10wb64q720wl" path="res://ui/health_meter.tscn" id="8_nmnbi"]
 [ext_resource type="PackedScene" uid="uid://dxp81qhq5vuq" path="res://enemies/plant_enemy.tscn" id="9_kg4i5"]
+[ext_resource type="PackedScene" uid="uid://bou8nu353x5ol" path="res://enemies/crawling_enemy.tscn" id="10_r1k6g"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jieoe")
@@ -86,6 +87,13 @@ rotation = 1.57079
 
 [node name="PlantEnemy4" parent="." instance=ExtResource("9_kg4i5")]
 position = Vector2(219, 160)
+
+[node name="CrawlingEnemy" parent="." instance=ExtResource("10_r1k6g")]
+position = Vector2(131, 128)
+crawling_direction = -1
+
+[node name="CrawlingEnemy2" parent="." instance=ExtResource("10_r1k6g")]
+position = Vector2(206, 80)
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
