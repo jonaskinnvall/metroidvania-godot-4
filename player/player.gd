@@ -26,6 +26,10 @@ var state: Callable = move_state
 @onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
 
 
+func _enter_tree() -> void:
+	MainInstances.player = self
+
+
 func _ready() -> void:
 	PlayerStats.no_health.connect(die)
 
@@ -36,6 +40,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed('fire') and fire_rate_timer.time_left == 0:
 		fire_rate_timer.start()
 		player_blaster.fire_bullet()
+
+
+func _exit_tree() -> void:
+	MainInstances.player = null
 
 
 func move_state(delta: float) -> void:
