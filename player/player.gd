@@ -24,6 +24,7 @@ var state: Callable = move_state
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var blink_animation_player: AnimationPlayer = $BlinkAnimationPlayer
+@onready var pathfinding_marker: Marker2D = $PathfindingMarker
 
 
 func _enter_tree() -> void:

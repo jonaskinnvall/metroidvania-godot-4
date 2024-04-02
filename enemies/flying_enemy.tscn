@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8xsk0uwsaqoh"]
+[gd_scene load_steps=17 format=3 uid="uid://c8xsk0uwsaqoh"]
 
 [ext_resource type="Script" path="res://enemies/flying_enemy.gd" id="1_am4qp"]
 [ext_resource type="Texture2D" uid="uid://cxq5cs8v8hc5m" path="res://enemies/flying_enemy.png" id="1_vv26w"]
 [ext_resource type="PackedScene" uid="uid://didjova8ah46y" path="res://collisions/hurtbox.tscn" id="3_3r0kh"]
 [ext_resource type="PackedScene" uid="uid://tkxrr6fs055k" path="res://collisions/hitbox.tscn" id="4_cc040"]
 [ext_resource type="PackedScene" uid="uid://d0h0ldh0uyvxi" path="res://base_stats.tscn" id="5_pum8j"]
+[ext_resource type="PackedScene" uid="uid://2dmf87ry7t7m" path="res://enemies/waypoint_pathfinding.tscn" id="6_wv8cp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_arp1w"]
 radius = 6.0
@@ -96,6 +97,8 @@ shape = SubResource("CircleShape2D_sihs3")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(4.76837e-07, -1.5)
 scale = Vector2(1, 0.85)
+
+[node name="WaypointPathfinding" parent="." instance=ExtResource("6_wv8cp")]
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="BaseStats" to="." method="_on_base_stats_no_health"]

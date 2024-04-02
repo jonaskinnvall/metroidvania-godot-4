@@ -268,5 +268,8 @@ libraries = {
 "": SubResource("AnimationLibrary_cis8s")
 }
 
+[node name="PathfindingMarker" type="Marker2D" parent="."]
+position = Vector2(0, -8)
+
 [connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

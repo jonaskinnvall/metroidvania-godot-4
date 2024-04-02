@@ -6,6 +6,7 @@ const EnemyDeathEffect: PackedScene = preload('res://effects/enemy_death_effect.
 @export var max_speed: int = 30
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var base_stats: BaseStats = $BaseStats
+@onready var waypoint_pathfinding: Node2D = $WaypointPathfinding
 
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	var player : CharacterBody2D = MainInstances.player
 	
 	if player is CharacterBody2D:
-		var direction: Vector2 = global_position.direction_to(player.global_position)
+		var direction: Vector2 = global_position.direction_to(waypoint_pathfinding.pathfinding_next_position)
 		velocity = velocity.move_toward(direction * max_speed, speed * delta)
 
 		animated_sprite_2d.flip_h = global_position < player.global_position
