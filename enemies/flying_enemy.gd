@@ -8,6 +8,10 @@ const EnemyDeathEffect: PackedScene = preload('res://effects/enemy_death_effect.
 @onready var base_stats: BaseStats = $BaseStats
 
 
+func _ready() -> void:
+	set_physics_process(false)
+
+
 func _physics_process(delta: float) -> void:
 	var player : CharacterBody2D = MainInstances.player
 	
@@ -26,3 +30,7 @@ func _on_hurtbox_hurt(hitbox: Area2D, damage: int) -> void:
 func _on_base_stats_no_health() -> void:
 	Utils.instanstiate_to_world(EnemyDeathEffect, global_position)
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	set_physics_process(true)

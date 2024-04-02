@@ -93,5 +93,10 @@ shape = SubResource("CircleShape2D_sihs3")
 
 [node name="BaseStats" parent="." instance=ExtResource("5_pum8j")]
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, -1.5)
+scale = Vector2(1, 0.85)
+
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="BaseStats" to="." method="_on_base_stats_no_health"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
