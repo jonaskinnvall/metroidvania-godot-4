@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
-func _on_hurtbox_hurt(hitbox: Area2D, damage: int) -> void:
+func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
 	base_stats.health -= damage
 
 
