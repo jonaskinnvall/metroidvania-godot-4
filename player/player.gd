@@ -38,9 +38,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	state.call(delta)
 	
-	if Input.is_action_pressed('fire') and fire_rate_timer.time_left == 0:
+	if Input.is_action_pressed('fire_bullet') and fire_rate_timer.time_left == 0:
 		fire_rate_timer.start()
 		player_blaster.fire_bullet()
+		
+	if (Input.is_action_pressed('fire_missile') 
+	and fire_rate_timer.time_left == 0 
+	and PlayerStats.missiles > 0):
+		fire_rate_timer.start()
+		player_blaster.fire_missile()
+		PlayerStats.missiles -= 1
 
 
 func _exit_tree() -> void:
@@ -187,5 +194,5 @@ func _on_drop_timer_timeout() -> void:
 
 func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 	Events.add_screenshake.emit(3, 0.25)
-	PlayerStats.health -= 1
+	PlayerStats.health -= damage
 	blink_animation_player.play('blink')
