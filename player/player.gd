@@ -186,7 +186,6 @@ func _on_drop_timer_timeout() -> void:
 
 
 func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
-	print('damage on player ', self, ': ', damage)
 	Events.add_screenshake.emit(3, 0.25)
 	PlayerStats.health -= 1
 	blink_animation_player.play('blink')

@@ -34,7 +34,6 @@ func is_on_ledge() -> bool:
 
 
 func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
-	print('damage on enemy ', self, ': ', damage)
 	stats.health -= damage
 
 
