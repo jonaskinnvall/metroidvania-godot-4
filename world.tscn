@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr7rnsmitt6ey"]
+[gd_scene load_steps=14 format=3 uid="uid://cr7rnsmitt6ey"]
 
 [ext_resource type="PackedScene" uid="uid://pky2h0au0m82" path="res://player/player.tscn" id="1_gedpc"]
 [ext_resource type="Script" path="res://world.gd" id="1_jieoe"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c10wb64q720wl" path="res://ui/health_meter.tscn" id="8_nmnbi"]
 [ext_resource type="PackedScene" uid="uid://dxp81qhq5vuq" path="res://enemies/plant_enemy.tscn" id="9_kg4i5"]
 [ext_resource type="PackedScene" uid="uid://bdbht3m8gaxfq" path="res://menus/pause_menu.tscn" id="9_libb7"]
+[ext_resource type="PackedScene" uid="uid://oaslb1p0si5p" path="res://ui/missile_ui.tscn" id="10_6y5gb"]
 [ext_resource type="PackedScene" uid="uid://bou8nu353x5ol" path="res://enemies/crawling_enemy.tscn" id="10_r1k6g"]
 [ext_resource type="PackedScene" uid="uid://c8xsk0uwsaqoh" path="res://enemies/flying_enemy.tscn" id="11_r8fdl"]
 
@@ -77,6 +78,12 @@ offset_bottom = 2.0
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("9_libb7")]
 visible = false
+
+[node name="MissileUI" parent="UI" instance=ExtResource("10_6y5gb")]
+offset_left = 2.0
+offset_top = 15.0
+offset_right = 22.0
+offset_bottom = 25.0
 
 [node name="PlantEnemy" parent="." instance=ExtResource("9_kg4i5")]
 position = Vector2(204, 96)
