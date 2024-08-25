@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cr7rnsmitt6ey"]
+[gd_scene load_steps=15 format=3 uid="uid://cr7rnsmitt6ey"]
 
 [ext_resource type="PackedScene" uid="uid://pky2h0au0m82" path="res://player/player.tscn" id="1_gedpc"]
 [ext_resource type="Script" path="res://world.gd" id="1_jieoe"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://oaslb1p0si5p" path="res://ui/missile_ui.tscn" id="10_6y5gb"]
 [ext_resource type="PackedScene" uid="uid://bou8nu353x5ol" path="res://enemies/crawling_enemy.tscn" id="10_r1k6g"]
 [ext_resource type="PackedScene" uid="uid://c8xsk0uwsaqoh" path="res://enemies/flying_enemy.tscn" id="11_r8fdl"]
+[ext_resource type="PackedScene" uid="uid://ciwvg81toxmqy" path="res://world/brick.tscn" id="14_06kgx"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_jieoe")
@@ -115,6 +116,27 @@ position = Vector2(293, 90)
 
 [node name="FlyingEnemy3" parent="." instance=ExtResource("11_r8fdl")]
 position = Vector2(-43, 34)
+
+[node name="Brick" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(352, 144)
+
+[node name="Brick2" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(352, 128)
+
+[node name="Brick3" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(352, 112)
+
+[node name="Brick4" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(160, 256)
+
+[node name="Brick5" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(80, 192)
+
+[node name="Brick6" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(80, 176)
+
+[node name="Brick7" parent="." instance=ExtResource("14_06kgx")]
+position = Vector2(80, 160)
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
