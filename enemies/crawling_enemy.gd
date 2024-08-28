@@ -12,6 +12,7 @@ var state: Callable = crawling_state
 @onready var wall_cast: RayCast2D = $WallCast
 @onready var floor_cast: RayCast2D = $FloorCast
 @onready var base_stats: BaseStats = $BaseStats
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 
 func crawling_state(delta: float) -> void:
+	animated_sprite_2d.play("crawl")
 	if wall_cast.is_colliding():
 		global_position = wall_cast.get_collision_point()
 		var wall_normal: Vector2 = wall_cast.get_collision_normal()
@@ -46,6 +48,7 @@ func crawling_state(delta: float) -> void:
 
 
 func falling_state(delta: float) -> void:
+	animated_sprite_2d.play("fall")
 	rotation_degrees += crawling_direction * spin_speed * delta
 	position.y += gravity * delta
 	
