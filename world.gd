@@ -19,4 +19,5 @@ func change_levels(door: Door) -> void:
 	var doors: Array = get_tree().get_nodes_in_group('doors')
 	for found_door: Door in doors:
 		if found_door == door or found_door.connection != door.connection: continue
-		player.global_position = found_door.global_position
+		var yoffset: float = player.global_position.y - door.global_position.y
+		player.global_position = found_door.global_position + Vector2(0,yoffset)
