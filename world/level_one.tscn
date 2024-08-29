@@ -471,5 +471,6 @@ crawling_direction = -1
 
 [node name="Door" parent="." instance=ExtResource("11_cn6rj")]
 position = Vector2(488, 144)
+new_level_path = "res://world/level_two.tscn"
 
 [editable path="MovingPlatform"]

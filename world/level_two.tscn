@@ -19,8 +19,10 @@ curve = ExtResource("3_vqagl")
 
 [node name="Door" parent="." instance=ExtResource("4_xqfcu")]
 position = Vector2(-648, 144)
+new_level_path = "res://world/level_one.tscn"
 
 [node name="Door2" parent="." instance=ExtResource("4_xqfcu")]
 position = Vector2(696, 128)
+new_level_path = "res://world/level_three.tscn"
 
 [editable path="MovingPlatform2"]
