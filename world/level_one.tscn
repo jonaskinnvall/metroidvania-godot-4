@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqngktdtc1dyg"]
+[gd_scene load_steps=16 format=3 uid="uid://dqngktdtc1dyg"]
 
 [ext_resource type="PackedScene" uid="uid://ifmvk8mb5oxe" path="res://world/world_tile_map.tscn" id="1_8mh01"]
 [ext_resource type="Texture2D" uid="uid://d2vs580r86a4j" path="res://world/tileset.png" id="2_r5eft"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxp81qhq5vuq" path="res://enemies/plant_enemy.tscn" id="8_k5n3r"]
 [ext_resource type="PackedScene" uid="uid://b4t6syjcgsc3h" path="res://enemies/walking_enemy.tscn" id="9_clnuv"]
 [ext_resource type="PackedScene" uid="uid://bou8nu353x5ol" path="res://enemies/crawling_enemy.tscn" id="10_dyns0"]
+[ext_resource type="Resource" uid="uid://c4ps3nakti51y" path="res://world/one_two.tres" id="11_aorvf"]
 [ext_resource type="PackedScene" uid="uid://dipmmola47rx2" path="res://world/door.tscn" id="11_cn6rj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amnx5"]
@@ -472,5 +473,6 @@ crawling_direction = -1
 [node name="Door" parent="." instance=ExtResource("11_cn6rj")]
 position = Vector2(488, 144)
 new_level_path = "res://world/level_two.tscn"
+connection = ExtResource("11_aorvf")
 
 [editable path="MovingPlatform"]

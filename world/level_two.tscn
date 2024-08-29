@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq3y535cu3tul"]
+[gd_scene load_steps=7 format=3 uid="uid://dq3y535cu3tul"]
 
 [ext_resource type="PackedScene" uid="uid://ifmvk8mb5oxe" path="res://world/world_tile_map.tscn" id="1_0ydkr"]
 [ext_resource type="PackedScene" uid="uid://dja5ytr0ise7l" path="res://world/moving_platform.tscn" id="2_5q4kd"]
 [ext_resource type="Curve2D" uid="uid://dlukexwrhw6um" path="res://world/hex_path.tres" id="3_vqagl"]
 [ext_resource type="PackedScene" uid="uid://dipmmola47rx2" path="res://world/door.tscn" id="4_xqfcu"]
+[ext_resource type="Resource" uid="uid://c4ps3nakti51y" path="res://world/one_two.tres" id="5_t6atv"]
+[ext_resource type="Resource" uid="uid://blj56ub8bpf12" path="res://world/two_three.tres" id="6_uyb1a"]
 
 [node name="LevelTwo" type="Node2D"]
 
@@ -20,9 +22,11 @@ curve = ExtResource("3_vqagl")
 [node name="Door" parent="." instance=ExtResource("4_xqfcu")]
 position = Vector2(-648, 144)
 new_level_path = "res://world/level_one.tscn"
+connection = ExtResource("5_t6atv")
 
 [node name="Door2" parent="." instance=ExtResource("4_xqfcu")]
 position = Vector2(696, 128)
 new_level_path = "res://world/level_three.tscn"
+connection = ExtResource("6_uyb1a")
 
 [editable path="MovingPlatform2"]

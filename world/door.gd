@@ -2,6 +2,7 @@ class_name Door
 extends Area2D
 
 @export_file('*.tscn') var new_level_path: String
+@export var connection: DoorConnection
 @onready var left_cast: RayCast2D = $LeftCast
 @onready var right_cast: RayCast2D = $RightCast
 

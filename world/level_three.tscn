@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgbhmknsjqvqa"]
+[gd_scene load_steps=4 format=3 uid="uid://bgbhmknsjqvqa"]
 
 [ext_resource type="PackedScene" uid="uid://ifmvk8mb5oxe" path="res://world/world_tile_map.tscn" id="1_kcl2m"]
 [ext_resource type="PackedScene" uid="uid://dipmmola47rx2" path="res://world/door.tscn" id="2_7slp4"]
+[ext_resource type="Resource" uid="uid://blj56ub8bpf12" path="res://world/two_three.tres" id="3_0xxtt"]
 
 [node name="LevelThree" type="Node2D"]
 
@@ -11,3 +12,4 @@ layer_0/tile_data = PackedInt32Array(1376312, 131072, 2, 1310776, 131072, 1, 124
 [node name="Door" parent="." instance=ExtResource("2_7slp4")]
 position = Vector2(40, 192)
 new_level_path = "res://world/level_two.tscn"
+connection = ExtResource("3_0xxtt")
