@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 	var player: Player = MainInstances.player
 	if not player is Player: return
 	
-	if overlaps_body(player):
+	if overlaps_body(player) and new_level_path:
 		var player_direction: int = sign(player.velocity.x)
 		if player_direction == get_direction():
 			Events.door_entered.emit(self)

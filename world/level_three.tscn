@@ -13,3 +13,6 @@ layer_0/tile_data = PackedInt32Array(1376312, 131072, 2, 1310776, 131072, 1, 124
 position = Vector2(40, 192)
 new_level_path = "res://world/level_two.tscn"
 connection = ExtResource("3_0xxtt")
+
+[node name="Door2" parent="." instance=ExtResource("2_7slp4")]
+position = Vector2(664, 240)
