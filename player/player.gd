@@ -126,12 +126,12 @@ func wall_jump_check(wall_axis: float) -> void:
 		velocity.x = wall_axis * max_velocity
 		jump(jump_force * 0.75, false)
 		var effect_position: Vector2 = global_position + Vector2(wall_axis * 4, -2)
-		var wall_jump_effect:Node2D = Utils.instanstiate_to_world(WallJumpEffectScene, effect_position)
+		var wall_jump_effect:Node2D = Utils.instantiate_to_level(WallJumpEffectScene, effect_position)
 		wall_jump_effect.scale.x = wall_axis
 
 
 func create_dust_effect() -> void:
-	Utils.instanstiate_to_world(DustEffectScene, global_position)
+	Utils.instantiate_to_level(DustEffectScene, global_position)
 
 
 func apply_gravity(delta: float) -> void:
@@ -168,7 +168,7 @@ func jump_check() -> void:
 func jump(force: float, create_effect: bool = true) -> void:
 	velocity.y -= force
 	if create_effect:
-		Utils.instanstiate_to_world(JumpEffectScene, global_position)
+		Utils.instantiate_to_level(JumpEffectScene, global_position)
 	
 
 func update_animations(direction: float) -> void:

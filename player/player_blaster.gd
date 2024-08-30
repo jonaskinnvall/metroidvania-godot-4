@@ -12,12 +12,12 @@ func _process(_delta: float) -> void:
 
 
 func fire_bullet() -> void:
-	var bullet: Node2D = Utils.instanstiate_to_world(BulletScene, muzzle.global_position)
+	var bullet: Node2D = Utils.instantiate_to_level(BulletScene, muzzle.global_position)
 	bullet.rotation = blaster_sprite.rotation
 	bullet.update_velocity_based_on_rotation()
 
 
 func fire_missile() -> void:
-	var missile: Node2D = Utils.instanstiate_to_world(MissileScene, muzzle.global_position)
+	var missile: Node2D = Utils.instantiate_to_level(MissileScene, muzzle.global_position)
 	missile.rotation = blaster_sprite.rotation
 	missile.update_velocity_based_on_rotation()

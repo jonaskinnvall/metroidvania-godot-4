@@ -38,5 +38,5 @@ func _on_hurtbox_hurt(_hitbox: Variant, damage: Variant) -> void:
 
 
 func _on_stats_no_health() -> void:
-	Utils.instanstiate_to_world(EnemyDeathEffect, death_effect_spawn_location.global_position)
+	Utils.instantiate_to_level(EnemyDeathEffect, death_effect_spawn_location.global_position)
 	queue_free()
