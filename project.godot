@@ -21,6 +21,7 @@ Utils="*res://utils.gd"
 Events="*res://events.gd"
 PlayerStats="*res://player/player_stats.tscn"
 MainInstances="*res://main_instances.gd"
+WorldStash="*res://world_stash.gd"
 
 [debug]
 
