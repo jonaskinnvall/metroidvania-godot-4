@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqngktdtc1dyg"]
+[gd_scene load_steps=18 format=3 uid="uid://dqngktdtc1dyg"]
 
 [ext_resource type="PackedScene" uid="uid://ifmvk8mb5oxe" path="res://world/world_tile_map.tscn" id="1_8mh01"]
 [ext_resource type="Texture2D" uid="uid://d2vs580r86a4j" path="res://world/tileset.png" id="2_r5eft"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://c4ps3nakti51y" path="res://world/one_two.tres" id="11_aorvf"]
 [ext_resource type="PackedScene" uid="uid://dipmmola47rx2" path="res://world/door.tscn" id="11_cn6rj"]
 [ext_resource type="PackedScene" uid="uid://dwjtvcfq2ep0c" path="res://world/camera_limits.tscn" id="12_37gcf"]
+[ext_resource type="PackedScene" uid="uid://clltyxyyfukqo" path="res://player/missile_powerup.tscn" id="13_f4kdh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amnx5"]
 texture = ExtResource("2_r5eft")
@@ -481,5 +482,8 @@ offset_left = -127.0
 offset_top = -14.0
 offset_right = 480.0
 offset_bottom = 262.0
+
+[node name="MissilePowerup" parent="." instance=ExtResource("13_f4kdh")]
+position = Vector2(293, 137)
 
 [editable path="MovingPlatform"]
