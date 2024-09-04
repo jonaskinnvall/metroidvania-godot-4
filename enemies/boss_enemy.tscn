@@ -277,6 +277,7 @@ shape = SubResource("CircleShape2D_6l2fk")
 
 [node name="BossStats" type="Node" parent="."]
 script = ExtResource("7_islrs")
+max_health = 200
 
 [connection signal="hurt" from="Body/Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="BossStats" to="." method="_on_boss_stats_no_health"]
