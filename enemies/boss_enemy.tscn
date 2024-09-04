@@ -279,5 +279,16 @@ shape = SubResource("CircleShape2D_6l2fk")
 script = ExtResource("7_islrs")
 max_health = 200
 
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="StingerPivot" type="Marker2D" parent="."]
+position = Vector2(0, 6)
+
+[node name="Muzzle" type="Marker2D" parent="StingerPivot"]
+position = Vector2(15, 0)
+
 [connection signal="hurt" from="Body/Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="BossStats" to="." method="_on_boss_stats_no_health"]
