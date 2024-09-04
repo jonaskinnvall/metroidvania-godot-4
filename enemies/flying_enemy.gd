@@ -14,9 +14,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var player : CharacterBody2D = MainInstances.player
+	var player : Player = MainInstances.player
 	
-	if player is CharacterBody2D:
+	if player is Player:
 		var direction: Vector2 = global_position.direction_to(waypoint_pathfinding.pathfinding_next_position)
 		velocity = velocity.move_toward(direction * max_speed, speed * delta)
 
