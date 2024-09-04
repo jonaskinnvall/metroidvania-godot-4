@@ -4,8 +4,8 @@ const StingerScene: PackedScene = preload('res://enemies/stinger.tscn')
 
 @export var acceleration: int = 200
 @export var max_speed: int = 800
-
-var state: Callable = _fire_state
+@export var targets: Array[NodePath]
+var state: Callable = _recenter_state
 var velocity: Vector2 = Vector2.ZERO
 @onready var boss_stats: BaseStats = $BossStats
 @onready var fire_timer: Timer = $FireTimer
@@ -27,13 +27,24 @@ func _rush_state(delta: float) -> void:
 	move(delta)
 
 
-func _fire_state(_delta: float) -> void:
+func _fire_state() -> void:
 	if fire_timer.time_left == 0:
 		stinger_pivot.rotation_degrees += 17
 		fire_timer.start()
 		var stinger: Node2D = Utils.instantiate_to_level(StingerScene, muzzle.global_position)
 		stinger.rotation = stinger_pivot.rotation
 		stinger.update_velocity_based_on_rotation()
+
+
+func _recenter_state() -> void:
+	assert(not targets.is_empty())
+	set_process(false)
+	var target_node: Node2D = get_node(targets.pick_random())
+	
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "global_position", target_node.global_position, 2.0)
+	await  tween.finished
+	set_process(true)
 
 
 func move(delta: float) -> void:
