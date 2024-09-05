@@ -5,7 +5,10 @@ const StingerScene: PackedScene = preload('res://enemies/stinger.tscn')
 @export var acceleration: int = 200
 @export var max_speed: int = 800
 @export var targets: Array[NodePath]
-var state: Callable = _rush_state
+var STATES: Array[Callable] = [_rush_state, _fire_state, _rush_state, _fire_state]
+var states_left: Array = []
+var state: Callable = _recenter_state : set = _set_state
+var state_init: bool = true : get = _get_state_init
 var velocity: Vector2 = Vector2.ZERO
 @onready var boss_stats: BaseStats = $BossStats
 @onready var stinger_pivot: Marker2D = $StingerPivot
@@ -18,7 +21,26 @@ func _process(delta: float) -> void:
 	state.call(delta)
 
 
+func _set_state(value: Callable) -> void:
+	state = value
+	state_init = true
+
+
+func _get_state_init() -> bool:
+	var was: bool = state_init
+	state_init = false
+	return was
+
+
+func _start_next_state_timer(next_state: Callable) -> void:
+	if state_init:
+		state_timer.start(randf_range(2.0,6.0))
+		state_timer.timeout.connect(_set_state.bind(next_state),CONNECT_ONE_SHOT)
+
+
 func _rush_state(delta: float) -> void:
+	_start_next_state_timer(_decelerate_state)
+	
 	var player : Player = MainInstances.player
 	if not player is Player: return 
 
@@ -28,6 +50,8 @@ func _rush_state(delta: float) -> void:
 
 
 func _fire_state(_delta: float) -> void:
+	_start_next_state_timer(_recenter_state)
+		
 	if fire_timer.time_left == 0:
 		stinger_pivot.rotation_degrees += 17
 		fire_timer.start()
@@ -38,14 +62,17 @@ func _fire_state(_delta: float) -> void:
 
 func _recenter_state(_delta: float) -> void:
 	assert(not targets.is_empty())
-	set_process(false)
-	var target_node: Node2D = get_node(targets.pick_random())
-	
-	var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "global_position", target_node.global_position, 2.0)
-	await  tween.finished
-	set_process(true)
-	state = _rush_state
+	if state_init:
+		var target_node: Node2D = get_node(targets.pick_random())
+		var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, "global_position", target_node.global_position, 2.0)
+		await  tween.finished
+		state_timer.start(0.5)
+		await state_timer.timeout
+		if states_left.is_empty():
+			states_left = STATES.duplicate()
+			states_left.shuffle()
+		state = states_left.pop_back()
 
 
 func _decelerate_state(delta: float) -> void:
@@ -65,7 +92,3 @@ func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
 
 func _on_boss_stats_no_health() -> void:
 	queue_free()
-
-
-func _on_state_timer_timeout() -> void:
-	state = _decelerate_state
