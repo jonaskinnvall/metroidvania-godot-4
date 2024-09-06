@@ -17,6 +17,11 @@ var velocity: Vector2 = Vector2.ZERO
 @onready var state_timer: Timer = $StateTimer
 
 
+func _ready() -> void:
+	if WorldStash.retrieve('first_boss', 'freed'):
+		queue_free()
+
+
 func _process(delta: float) -> void:
 	state.call(delta)
 
@@ -92,3 +97,4 @@ func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
 
 func _on_boss_stats_no_health() -> void:
 	queue_free()
+	WorldStash.stash('first_boss', 'freed', true)
