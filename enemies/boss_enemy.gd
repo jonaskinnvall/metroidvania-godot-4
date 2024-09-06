@@ -2,6 +2,7 @@ extends Node2D
 
 const StingerScene: PackedScene = preload('res://enemies/stinger.tscn')
 const MissilePowerupScene: PackedScene = preload('res://player/missile_powerup.tscn')
+const EnemyDeathEffectScene: PackedScene = preload('res://effects/enemy_death_effect.tscn')
 
 @export var acceleration: int = 200
 @export var max_speed: int = 800
@@ -100,3 +101,5 @@ func _on_boss_stats_no_health() -> void:
 	queue_free()
 	WorldStash.stash('first_boss', 'freed', true)
 	Utils.instantiate_to_level(MissilePowerupScene, global_position)
+	for i: int in 6:
+		Utils.instantiate_to_level(EnemyDeathEffectScene, global_position + Vector2(randf_range(-16,16), randf_range(-16,16)))
