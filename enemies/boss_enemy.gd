@@ -1,6 +1,7 @@
 extends Node2D
 
 const StingerScene: PackedScene = preload('res://enemies/stinger.tscn')
+const MissilePowerupScene: PackedScene = preload('res://player/missile_powerup.tscn')
 
 @export var acceleration: int = 200
 @export var max_speed: int = 800
@@ -98,3 +99,4 @@ func _on_hurtbox_hurt(_hitbox: Area2D, damage: int) -> void:
 func _on_boss_stats_no_health() -> void:
 	queue_free()
 	WorldStash.stash('first_boss', 'freed', true)
+	Utils.instantiate_to_level(MissilePowerupScene, global_position)

@@ -17,7 +17,7 @@ func instantiate_to_level(scene: PackedScene, scene_position: Vector2) -> Node2D
 	var level: Node2D = world.level
 	var instance: Node2D = scene.instantiate()
 	
-	level.add_child(instance)
+	level.add_child.call_deferred(instance)
 	instance.global_position = scene_position
 	
 	return instance
