@@ -33,6 +33,7 @@ offset_right = 336.0
 offset_bottom = 164.0
 
 [node name="BossEnemy" parent="." instance=ExtResource("6_h6m7d")]
+z_index = 1
 position = Vector2(186, 64)
 targets = Array[NodePath]([NodePath("../BossTarget"), NodePath("../BossTarget2"), NodePath("../BossTarget3"), NodePath("../BossTarget4"), NodePath("../BossTarget5")])
 
