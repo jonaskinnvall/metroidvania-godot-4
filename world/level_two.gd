@@ -6,6 +6,10 @@ extends Node2D
 @onready var brick_4: Brick = $Bricks/Brick4
 
 
+func _ready() -> void:
+	bricks.hide()
+
+
 func _on_bricks_trigger__entered() -> void:
 	if not WorldStash.retrieve('first_boss', 'freed'):
 		bricks.show()
