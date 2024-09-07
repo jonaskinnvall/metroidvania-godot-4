@@ -217,6 +217,15 @@ floor_constant_speed = true
 floor_snap_length = 2.0
 safe_margin = 0.1
 script = ExtResource("1_jmlyb")
+acceleration = null
+max_velocity = null
+max_fall_velocity = null
+gravity = null
+friction = null
+air_friction = null
+jump_force = null
+wall_velocity = null
+max_wall_velocity = null
 
 [node name="PlayerBlaster" parent="." instance=ExtResource("3_p7ti0")]
 show_behind_parent = true

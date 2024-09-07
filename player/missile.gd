@@ -2,7 +2,7 @@ extends Projectile
 
 
 func _ready() -> void:
-	Sound.play('explosion')
+	Sound.play(Sound.explosion)
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

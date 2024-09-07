@@ -13,6 +13,15 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_gedpc")]
 position = Vector2(397, 144)
+acceleration = null
+max_velocity = null
+max_fall_velocity = null
+gravity = null
+friction = null
+air_friction = null
+jump_force = null
+wall_velocity = null
+max_wall_velocity = null
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0tdbgpce2xyu"]
+[gd_scene load_steps=12 format=3 uid="uid://d0tdbgpce2xyu"]
 
 [ext_resource type="Script" path="res://music_and_sounds/sound.gd" id="1_lt3ll"]
+[ext_resource type="AudioStream" uid="uid://iv7jietc177j" path="res://music_and_sounds/bullet.wav" id="2_k2lit"]
+[ext_resource type="AudioStream" uid="uid://cjsq3gv7v5mj8" path="res://music_and_sounds/click.wav" id="3_m06by"]
+[ext_resource type="AudioStream" uid="uid://cvh4t4qype1v6" path="res://music_and_sounds/enemy_die.wav" id="4_gc0kf"]
+[ext_resource type="AudioStream" uid="uid://c3oblu5b4yawt" path="res://music_and_sounds/explosion.wav" id="5_b8k0w"]
+[ext_resource type="AudioStream" uid="uid://dhm5w882ojp85" path="res://music_and_sounds/hurt.wav" id="6_b48ay"]
+[ext_resource type="AudioStream" uid="uid://cgmmu52jgwrri" path="res://music_and_sounds/jump.wav" id="7_crxjy"]
+[ext_resource type="AudioStream" uid="uid://dg8pddcn1jml0" path="res://music_and_sounds/pause.wav" id="8_ivtc0"]
+[ext_resource type="AudioStream" uid="uid://dcjqgpkhcqlp0" path="res://music_and_sounds/powerup.wav" id="9_kdq3d"]
+[ext_resource type="AudioStream" uid="uid://bwhdvwlwiuak7" path="res://music_and_sounds/step.wav" id="10_sc4ol"]
+[ext_resource type="AudioStream" uid="uid://dtq65lmv71atb" path="res://music_and_sounds/unpause.wav" id="11_4x420"]
 
 [node name="Sound" type="Node"]
 script = ExtResource("1_lt3ll")
+bullet = ExtResource("2_k2lit")
+click = ExtResource("3_m06by")
+enemy_die = ExtResource("4_gc0kf")
+explosion = ExtResource("5_b8k0w")
+hurt = ExtResource("6_b48ay")
+jump = ExtResource("7_crxjy")
+pause = ExtResource("8_ivtc0")
+powerup = ExtResource("9_kdq3d")
+step = ExtResource("10_sc4ol")
+unpause = ExtResource("11_4x420")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SoundFX"

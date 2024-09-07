@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 
 func pickup() -> void:
-	Sound.play('powerup', 1.0, -10.0)
+	Sound.play(Sound.powerup, 1.0, -10.0)
 	WorldStash.stash(WorldStash.get_id(self), "freed", true)
 	queue_free()
 
