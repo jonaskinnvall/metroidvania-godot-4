@@ -12,3 +12,5 @@ func play(sound_name: String, pitch_scale: float = 1.0, volume_db: float = 0.0) 
 			sound_player.stream = load(sounds_path + sound_name + '.wav')
 			sound_player.play()
 			return
+		else:
+			print('Too many sound streams playing at same time')
