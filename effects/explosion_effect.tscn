@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctfoguj3501sg"]
 
 [ext_resource type="Texture2D" uid="uid://bf5ayjc1k4auc" path="res://effects/explosion_effect.png" id="1_lv5on"]
-[ext_resource type="Script" path="res://effects/effect.gd" id="2_o51ol"]
+[ext_resource type="Script" path="res://effects/explosion_effect.gd" id="2_l1v1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emfff"]
 atlas = ExtResource("1_lv5on")
@@ -49,4 +49,4 @@ animations = [{
 [node name="ExplosionEffect" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_3p8b8")
 autoplay = "default"
-script = ExtResource("2_o51ol")
+script = ExtResource("2_l1v1o")
