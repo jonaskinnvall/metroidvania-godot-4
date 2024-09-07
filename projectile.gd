@@ -7,6 +7,10 @@ const ExplosionEffectScene: PackedScene = preload('res://effects/explosion_effec
 var velocity: Vector2 = Vector2.ZERO
 
 
+func _ready() -> void:
+	Sound.play('bullet', randf_range(0.6, 1.2))
+
+
 func _process(delta: float) -> void:
 	position += velocity * delta
 
