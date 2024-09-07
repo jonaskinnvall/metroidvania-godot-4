@@ -10,7 +10,6 @@ extends Node
 @export var powerup: AudioStream
 @export var step: AudioStream
 @export var unpause: AudioStream
-var sounds_path: String = 'res://music_and_sounds/'
 @onready var sound_players: Array[Node] = get_children()
 
 
