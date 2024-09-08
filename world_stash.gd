@@ -12,7 +12,7 @@ func get_id(node: Node2D) -> String:
 
 
 func stash(id: String, key: String, value: bool) -> void:
-	data[id] = {}
+	if not data.has(id): data[id] = {}
 	data[id][key] = value
 
 
