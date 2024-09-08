@@ -3,11 +3,19 @@ extends Node2D
 
 @onready var level: Node2D = $LevelOne
 
-# Called when the node enters the scene tree for the first time.
+
+func _enter_tree() -> void:
+	MainInstances.world = self
+
+
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	Events.door_entered.connect(change_levels)
 	Music.play(Music.main_theme)
+
+
+func _exit_tree() -> void:
+	MainInstances.world = null
 
 
 func change_levels(door: Door) -> void:
