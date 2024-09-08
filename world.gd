@@ -24,6 +24,13 @@ func _exit_tree() -> void:
 	MainInstances.world = null
 
 
+func load_level(file_path: String) -> void:
+	level.queue_free()
+	var new_level: Node2D = load(file_path).instantiate()
+	add_child(new_level)
+	level = new_level
+
+
 func change_levels(door: Door) -> void:
 	var player: Player = MainInstances.player
 	if not player is Player: return

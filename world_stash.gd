@@ -16,7 +16,7 @@ func stash(id: String, key: String, value: Variant) -> void:
 	data[id][key] = value
 
 
-func retrieve(id: String, key: String) -> bool:
+func retrieve(id: String, key: String) -> Variant:
 	if not data.has(id): return false
 	if not data[id].has(key): return false
 	

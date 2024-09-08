@@ -1,1 +1,1 @@
-{"LevelOne_MissilePowerup_(293, 137)":{"freed":true}}
+{"current_level":{"path":"res://world/level_one.tscn"},"player":{"last_position":"Vector2(397, 144)"}}
