@@ -26,6 +26,7 @@ func _exit_tree() -> void:
 
 func load_level(file_path: String) -> void:
 	level.queue_free()
+	level.name = level.name + 'OLD'
 	var new_level: Node2D = load(file_path).instantiate()
 	add_child(new_level)
 	level = new_level
