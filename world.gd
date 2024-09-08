@@ -14,6 +14,12 @@ func _ready() -> void:
 	Music.play(Music.main_theme)
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed('save'):
+		SaveManager.save_to_file()
+	if Input.is_action_just_pressed('load'):
+		SaveManager.load_from_file()
+
 func _exit_tree() -> void:
 	MainInstances.world = null
 
