@@ -11,7 +11,7 @@ func get_id(node: Node2D) -> String:
 	return level.name + "_" + node.name + "_" + str(node.global_position)
 
 
-func stash(id: String, key: String, value: bool) -> void:
+func stash(id: String, key: String, value: Variant) -> void:
 	if not data.has(id): data[id] = {}
 	data[id][key] = value
 
