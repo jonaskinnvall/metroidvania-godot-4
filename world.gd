@@ -12,13 +12,10 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	Events.door_entered.connect(change_levels)
 	Music.play(Music.main_theme)
-
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed('save'):
-		SaveManager.save_to_file()
-	if Input.is_action_just_pressed('load'):
+	if SaveManager.is_loading:
 		SaveManager.load_from_file()
+		SaveManager.is_loading = false
+
 
 func _exit_tree() -> void:
 	MainInstances.world = null
