@@ -101,5 +101,9 @@ shape = SubResource("CircleShape2D_hjkwr")
 
 [node name="BaseStats" parent="." instance=ExtResource("5_wkjou")]
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(1.625, 1.625)
+
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="BaseStats" to="." method="_on_base_stats_no_health"]
