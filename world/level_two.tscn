@@ -31,6 +31,7 @@ offset_left = 16.0
 offset_top = -16.0
 offset_right = 336.0
 offset_bottom = 164.0
+metadata/_edit_lock_ = true
 
 [node name="BossEnemy" parent="." instance=ExtResource("6_h6m7d")]
 z_index = 1

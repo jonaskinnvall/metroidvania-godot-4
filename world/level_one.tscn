@@ -485,6 +485,7 @@ offset_left = -127.0
 offset_top = -14.0
 offset_right = 480.0
 offset_bottom = 262.0
+metadata/_edit_lock_ = true
 
 [node name="MissilePowerup" parent="." instance=ExtResource("13_f4kdh")]
 position = Vector2(293, 137)
