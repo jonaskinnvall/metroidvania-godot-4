@@ -29,6 +29,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func can_see_target(from: Vector2) -> bool:
+	if not target is Node2D: return false
+	
 	ray_cast_2d.global_position = from
 	ray_cast_2d.target_position = target.global_position - from
 	ray_cast_2d.force_raycast_update()
