@@ -1,10 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqvguitd6qcul"]
+[gd_scene load_steps=8 format=3 uid="uid://cqvguitd6qcul"]
 
 [ext_resource type="Script" path="res://world/save_station.gd" id="1_1va1y"]
 [ext_resource type="Texture2D" uid="uid://7pl5wgr4r3l" path="res://world/save_station.png" id="1_vy3kx"]
+[ext_resource type="Texture2D" uid="uid://lcygspa6wneg" path="res://ui/white_square.png" id="3_13wde"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgc2e"]
 size = Vector2(16, 20)
+
+[sub_resource type="Animation" id="Animation_mk8qm"]
+resource_name = "save"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhiteSquare:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1.25), Vector2(1, 1.25), Vector2(0, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_lf2kn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhiteSquare:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxrmr"]
+_data = {
+"RESET": SubResource("Animation_lf2kn"),
+"save": SubResource("Animation_mk8qm")
+}
 
 [node name="SaveStation" type="StaticBody2D"]
 collision_mask = 0
@@ -24,5 +63,15 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rgc2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oxrmr")
+}
+
+[node name="WhiteSquare" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(1e-05, 1.25)
+texture = ExtResource("3_13wde")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
