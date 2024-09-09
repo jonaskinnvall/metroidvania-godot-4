@@ -2,6 +2,8 @@ extends BaseStats
 
 @export var max_missiles: int = 0: set = set_max_missiles
 @onready var missiles: int = max_missiles: set = set_missiles
+@onready var initial_max_health: int = max_health
+@onready var initial_max_missiles: int = max_missiles
 
 signal max_missiles_changed
 signal missiles_count_changed
@@ -9,6 +11,7 @@ signal missiles_count_changed
 func set_max_missiles(value: int) -> void:
 	max_missiles = value
 	max_missiles_changed.emit()
+
 
 func set_missiles(value: int) -> void:
 	missiles = clampi(value, 0, max_missiles)
@@ -18,6 +21,12 @@ func set_missiles(value: int) -> void:
 func refill() -> void:
 	health = max_health
 	missiles = max_missiles
+
+
+func reset() -> void:
+	max_health = initial_max_health
+	max_missiles = initial_max_missiles
+	refill()
 
 
 func stash_stats() -> void:

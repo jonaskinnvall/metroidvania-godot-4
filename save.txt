@@ -1,1 +1,1 @@
-{"LevelOne_MissilePowerup_(293, 137)":{"freed":true},"LevelTwo_MissilePowerup_(231.2524, 102.9985)":{"freed":true},"current_level":{"path":"res://world/level_one.tscn"},"first_boss":{"freed":true},"player":{"last_position":"Vector2(414.399, 143.907)"}}
+{"LevelOne_MissilePowerup_(293, 137)":{"freed":true},"current_level":{"path":"res://world/level_one.tscn"},"player":{"last_position":"Vector2(430.425, 139.997)","max_health":4,"max_missiles":3}}
