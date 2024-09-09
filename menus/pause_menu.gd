@@ -12,7 +12,7 @@ var paused: bool = false:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed('pause'):
+	if Input.is_action_just_pressed('pause') and MainInstances.player is Player:
 		paused = !paused
 
 
