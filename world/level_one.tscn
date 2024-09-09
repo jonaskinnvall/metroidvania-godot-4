@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqngktdtc1dyg"]
+[gd_scene load_steps=21 format=3 uid="uid://dqngktdtc1dyg"]
 
 [ext_resource type="PackedScene" uid="uid://ifmvk8mb5oxe" path="res://world/world_tile_map.tscn" id="1_8mh01"]
 [ext_resource type="Script" path="res://world/level.gd" id="1_hmlnm"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dwjtvcfq2ep0c" path="res://world/camera_limits.tscn" id="12_37gcf"]
 [ext_resource type="PackedScene" uid="uid://clltyxyyfukqo" path="res://player/missile_powerup.tscn" id="13_f4kdh"]
 [ext_resource type="PackedScene" uid="uid://cqvguitd6qcul" path="res://world/save_station.tscn" id="15_6ln0m"]
+[ext_resource type="PackedScene" uid="uid://c8xsk0uwsaqoh" path="res://enemies/flying_enemy.tscn" id="16_pkw12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amnx5"]
 texture = ExtResource("2_r5eft")
@@ -492,5 +493,8 @@ position = Vector2(293, 137)
 
 [node name="SaveStation" parent="." instance=ExtResource("15_6ln0m")]
 position = Vector2(441, 145)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("16_pkw12")]
+position = Vector2(337, 225)
 
 [editable path="MovingPlatform"]
