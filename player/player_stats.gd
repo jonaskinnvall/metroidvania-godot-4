@@ -13,3 +13,19 @@ func set_max_missiles(value: int) -> void:
 func set_missiles(value: int) -> void:
 	missiles = clampi(value, 0, max_missiles)
 	missiles_count_changed.emit()
+
+
+func refill() -> void:
+	health = max_health
+	missiles = max_missiles
+
+
+func stash_stats() -> void:
+	WorldStash.stash('player', 'max_health', max_health)
+	WorldStash.stash('player', 'max_missiles', max_missiles)
+
+
+func retrieve_stats() -> void:
+	max_health = WorldStash.retrieve('player', 'max_health')
+	max_missiles = WorldStash.retrieve('player', 'max_missiles')
+	refill()
