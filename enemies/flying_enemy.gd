@@ -15,11 +15,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not has_seen_player:
+	var player : Player = MainInstances.player
+	
+	if not has_seen_player and player is Player:
 		has_seen_player = waypoint_pathfinding.can_see_target(global_position)
 		return
-	
-	var player : Player = MainInstances.player
+
 	if player is Player:
 		var direction: Vector2 = global_position.direction_to(waypoint_pathfinding.pathfinding_next_position)
 		velocity = velocity.move_toward(direction * max_speed, speed * delta)
